@@ -1,0 +1,14 @@
+﻿namespace Cars_Dapper.Models
+{
+    /// <summary>
+    /// Class Car goes with database table Cars
+    /// </summary>
+    public class Car
+    {
+        public string licenseplate { get; set; }
+        public string make { get; set; }
+        public string model { get; set; }
+        public string color { get; set; }
+
+    }
+}
