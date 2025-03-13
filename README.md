@@ -6,8 +6,7 @@ Software til Teknologi
 | ACID-1 | Concurrency and Transactions | Database transaction benchmarker |
 | Cars-Dapper | Object Relational Mapping (ORM) | Prelude to CarAPI. Use Dapper and AI to seed DB |
 | CarAPI-1 | REST 1 | Adding the apiV1/Cars HttpGET action |
-| CarAPI-2 | REST 1 | Adding the additional apiV2/Cars/AA 12345 HttpGET action |
-| CarAPI-2 | REST 1 | Adding the apiV1/Cars HttpPOST actionn |
+| CarAPI-2 | REST 1 | Adding the additional apiV2/Cars/AA 12345 HttpGET action<br>Adding the apiV1/Cars HttpPOST action |
 | CarAPI-3 | REST 1 | Adding filter to the apiV1/Cars HttpGET action |
 | CarAPI-4 | REST 2 | Adding Razor UI as a multiproject solution |
 | Cryptography | Cryptography | AES,DES,3DES,RSA en/decryption, Razor app |
