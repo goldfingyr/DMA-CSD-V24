@@ -1,0 +1,42 @@
+{
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5003"
+    },
+    "https": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "OpenIDRealmURI": "https://auth.a.ucnit.eu/realms/xOIDCx",
+        "OpenIDRealm": "xOIDCx",
+        "OpenIDClient": "Alice",
+        "OpenIDSecret": "JvDnso8O773pE9ENJdRhsrJd5pVD5Q86"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7777;http://localhost:5003"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:25571",
+      "sslPort": 44396
+    }
+  }
+}

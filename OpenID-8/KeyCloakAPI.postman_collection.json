@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "f7336e74-2af5-494a-ba7b-84adea535c80",
+		"name": "KeyCloakAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6552230",
+		"_collection_link": "https://restless-crescent-426712.postman.co/workspace/xOIDCx~a57e757c-6fbc-4398-8200-3e488855ef78/collection/6552230-f7336e74-2af5-494a-ba7b-84adea535c80?action=share&source=collection_link&creator=6552230"
+	},
+	"item": [
+		{
+			"name": "metainformation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"OpenID_token_endpoint\", jsonData.token_endpoint);\r",
+							"pm.environment.set(\"OpenID_jwks_uri\", jsonData.jwks_uri);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{auth_url}}/{{OpenID_meta}}",
+					"host": [
+						"{{auth_url}}"
+					],
+					"path": [
+						"{{OpenID_meta}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "certificates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{OpenID_jwks_uri}}",
+					"host": [
+						"{{OpenID_jwks_uri}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Client Credentials Flow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"OpenID_accesstoken\", jsonData.access_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "response_type",
+							"value": "code",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{auth_client}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{auth_secret}}",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{OpenID_token_endpoint}}",
+					"host": [
+						"{{OpenID_token_endpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resource Owner Password Flow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"OpenID_accesstoken\", jsonData.access_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "{{auth_client}}",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{auth_secret}}",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{auth_user}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{auth_password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{auth_url}}/protocol/openid-connect/token",
+					"host": [
+						"{{auth_url}}"
+					],
+					"path": [
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

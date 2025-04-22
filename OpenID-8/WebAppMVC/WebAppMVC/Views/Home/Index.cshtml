@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="row">
+    <div class="col">
+        @if (ViewBag.name == null)
+        {
+            <p>No Name</p>
+        }
+        else
+        {
+            <p>Hello @ViewBag.name</p>
+        }
+        @if (ViewBag.weatherData == null)
+        {
+            <p>No Data</p>
+        } else
+        {
+            @foreach (var item in ViewBag.weatherdata.data)
+            {
+                <table>
+                    <tr><td>date</td><td>@item.date</td></tr>
+                    <tr><td>temperatureC</td><td>@item.temperatureC</td></tr>
+                    <tr><td>temperatureF</td><td>@item.temperatureF</td></tr>
+                    <tr><td>summary</td><td>@item.summary</td></tr>
+                </table>
+                <br />
+            }
+        }
+    </div>
+</div>
